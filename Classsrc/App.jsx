@@ -1,6 +1,6 @@
 // import "./App.css";
 // // import Header from "./components/ClassHeader";
-// // import Mouting from "./components/Mounting";
+// // import Mounting from "./components/Mounting";
 // // import Updating from "./components/Updating";
 // import Unmounting from "./components/Unmounting";
 
@@ -9,7 +9,7 @@
 //     <>
 //       <p className="read-the-docs">
 //         {/* <Header /> */}
-//         {/* <Mouting /> */}
+//         {/* <Mounting /> */}
 //         {/* <Updating />   */}
 //         <Unmounting />
 //       </p>
