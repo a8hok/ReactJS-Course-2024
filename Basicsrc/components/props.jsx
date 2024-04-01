@@ -5,8 +5,6 @@
 // props are read only
 // default props
 
-import React from "react";
-
 // function props({ details = { myName: "default" }, callfromChild = () => {} }) {
 function props({ details, callfromChild }) {
   const { myName, age, address } = details;
