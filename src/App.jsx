@@ -1,54 +1,31 @@
-import { useReducer } from "react";
+import { Suspense } from "react";
 
-function App() {
-  const initialState = {
-    count: 0,
-    limit: 5,
-  };
+// A component that fetches data asynchronously
+const fetchData = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data loaded successfully");
+    }, 2000);
+  });
+};
 
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "INC_COUNT":
-        return { ...state, count: state.count + 1 };
-      case "DEC_COUNT":
-        return { ...state, count: state.count - 1 };
-      case "RESET":
-        return { ...state, count: 0 };
-      default:
-        return state;
-    }
-  };
+// A component that displays the fetched data
+const DataDisplay = async () => {
+  const data = await fetchData();
+  console.log(data);
+  return <div>{data}</div>;
+};
 
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const incCount = () => {
-    dispatch({ type: "INC_COUNT" });
-  };
-
-  const decCount = () => {
-    dispatch({ type: "DEC_COUNT" });
-  };
-
-  const reset = () => {
-    dispatch({ type: "RESET" });
-  };
-
+// App component that uses Suspense to wait for data fetching
+const App = () => {
   return (
     <div>
-      <h1>App Component</h1>
-      <div>
-        <p>Count: {state.count}</p>
-        <p>Limit: {state.limit}</p>
-        <button onClick={incCount} disabled={state.count === state.limit}>
-          Increment
-        </button>
-        <button onClick={decCount} disabled={state.count === 0}>
-          Decrement
-        </button>
-        <button onClick={reset}>Reset</button>
-      </div>
+      <h1>React Suspense Example</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        <DataDisplay />
+      </Suspense>
     </div>
   );
-}
+};
 
 export default App;
